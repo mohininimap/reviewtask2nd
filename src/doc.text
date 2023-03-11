@@ -1,0 +1,5 @@
+  const counters=[...this.state.counters];
+    const index=counters.indexOf(counter)
+    counters[index]={...counter}  //here clone new object that have receive.yaha current object index position milegi aur jo naya object milega o ham clone karenge
+    counters[index].value++ //yaha value direct increment ho raha tha o avoid karne ke above sentence
+this.setState({counters})
