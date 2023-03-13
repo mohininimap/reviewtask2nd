@@ -5,42 +5,43 @@ import "./Clickshowdata.css"
 const Clickshowdata = () => {
   const [show, setShow] = useState(false);
   const [users, setUsers] = useState([]);
-  const classn = show ? "btn1" : ""
   useEffect(() => {
     setUsers(data);
   }, []);
-
   const fun1 = () => {
     return (
-    <table className="table table-striped">
-    <thead>
-      <tr>
-        <th>userId</th>
-        <th>id</th>
-        <th>title</th>
-        <th>body</th>
-      </tr>
-    </thead>
-    <tbody>
-      {users
-        .filter((item, index) => (show ? index < users.length : index < 2)).map((item) => (
-        <tr key={item.id}>
-          <td>{item.id}</td>
-          <td>{item.title}</td>
-          <td>{item.body}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+      <>
+      <h4>Users Data</h4>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users
+            .filter((item, index) => (show ? index < users.length : index < 2)).map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.title}</td>
+                <td>{item.body}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      </>
+      
     );
   };
   const showData = () => {
-    setShow(true);
+    setShow(!show);
   };
   return (
     <>
       <div>{fun1()}</div>
-      <button className={classn} onClick={() => showData()}>Show</button>
+      <button className={show ? "btn btn-primary" : "btn btn-success"} onClick={() => showData()}>To {show ? "Show Less" : "Show More"}</button>
     </>
   );
 };
